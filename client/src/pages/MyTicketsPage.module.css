@@ -1,0 +1,246 @@
+/* MyTicketsPage.module.css — "My Tickets" page styles */
+
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  padding: var(--space-4);
+  animation: pageEnter 0.3s ease-in-out;
+}
+
+.centerState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  gap: var(--space-4);
+}
+
+.stateText {
+  color: var(--color-text-dim);
+  font-size: 0.95rem;
+}
+
+.pageHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--space-6);
+}
+
+.pageTitle {
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--color-text);
+  margin: 0;
+}
+
+.pageSubtitle {
+  color: var(--color-text-dim);
+  margin: var(--space-2) 0 0;
+  font-size: 0.95rem;
+}
+
+.errorBox {
+  display: flex;
+  gap: var(--space-3);
+  align-items: center;
+  padding: var(--space-4);
+  background-color: rgba(220, 38, 38, 0.08);
+  border: 1px solid var(--color-danger);
+  border-radius: var(--radius-md);
+  color: var(--color-danger);
+  font-size: 0.9rem;
+}
+
+.errorBox p {
+  flex: 1;
+  margin: 0;
+}
+
+/* Toolbar */
+.toolbar {
+  display: flex;
+  gap: var(--space-3);
+  align-items: center;
+  flex-wrap: wrap;
+  padding: var(--space-3);
+  background-color: var(--bg-secondary);
+  border-radius: var(--radius-md);
+}
+
+.searchWrap {
+  flex: 1;
+  min-width: 200px;
+}
+
+.searchInput {
+  width: 100%;
+}
+
+.filterWrap {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.filterSelect {
+  min-width: 150px;
+}
+
+.resultCount {
+  color: var(--color-text-dim);
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
+/* Empty state */
+.emptyState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  padding: var(--space-8) var(--space-4);
+  text-align: center;
+  min-height: 400px;
+}
+
+.stateIcon {
+  font-size: 3rem;
+  display: block;
+}
+
+.stateTitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--color-text);
+  margin: 0;
+}
+
+.stateText {
+  color: var(--color-text-dim);
+  font-size: 0.95rem;
+  max-width: 500px;
+}
+
+/* Table Card */
+.tableCard {
+  overflow-x: auto;
+}
+
+/* Table Cells */
+.ticketIdCell {
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.titleCell {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.docIcon {
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+.titleText {
+  word-break: break-word;
+  line-height: 1.4;
+}
+
+.deptPill {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  background-color: rgba(59, 130, 246, 0.1);
+  border-radius: 0.25rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #3b82f6;
+  white-space: nowrap;
+}
+
+.dateCell {
+  font-size: 0.9rem;
+  color: var(--color-text-dim);
+  white-space: nowrap;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .pageHeader {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .toolbar {
+    flex-direction: column;
+  }
+
+  .searchWrap {
+    width: 100%;
+    min-width: unset;
+  }
+
+  .filterWrap {
+    width: 100%;
+  }
+
+  .filterSelect {
+    width: 100%;
+    min-width: unset;
+  }
+}
+
+@media (max-width: 768px) {
+  .page {
+    padding: var(--space-3);
+    gap: var(--space-3);
+  }
+
+  .pageTitle {
+    font-size: 1.5rem;
+  }
+
+  .toolbar {
+    flex-direction: column;
+  }
+
+  .searchInput {
+    width: 100%;
+  }
+
+  .filterSelect {
+    width: 100%;
+  }
+
+  .resultCount {
+    width: 100%;
+    text-align: center;
+  }
+
+  .emptyState {
+    padding: var(--space-6) var(--space-3);
+  }
+
+  .stateIcon {
+    font-size: 2.5rem;
+  }
+
+  .stateTitle {
+    font-size: 1.1rem;
+  }
+}
+
+@keyframes pageEnter {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

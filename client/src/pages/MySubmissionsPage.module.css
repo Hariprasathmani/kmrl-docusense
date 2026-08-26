@@ -1,0 +1,220 @@
+/* MySubmissionsPage.module.css */
+
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: var(--space-4);
+  max-width: 1400px;
+  margin: 0 auto;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.centerState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  gap: 1rem;
+}
+
+.stateText {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+
+.pageHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 2rem;
+}
+
+@media (max-width: 768px) {
+  .pageHeader {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+.pageTitle {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.pageSubtitle {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  margin: 0.5rem 0 0;
+}
+
+.headerActions {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.errorBox {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  padding: 1rem;
+  background-color: rgba(220, 53, 69, 0.1);
+  border: 1px solid var(--color-danger);
+  border-radius: var(--radius);
+  color: var(--color-danger);
+}
+
+.errorBox span {
+  font-size: 1.25rem;
+  flex-shrink: 0;
+}
+
+.errorBox p {
+  margin: 0;
+  flex: 1;
+}
+
+.toolbar {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 1rem;
+  background-color: var(--bg-hover);
+  border-radius: var(--radius);
+}
+
+@media (max-width: 768px) {
+  .toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+.searchWrap {
+  flex: 1;
+  min-width: 200px;
+}
+
+.searchInput {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  font-size: 0.95rem;
+}
+
+.filterWrap {
+  min-width: 150px;
+}
+
+.filterSelect {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  background-color: var(--bg-primary);
+  font-size: 0.95rem;
+}
+
+.resultCount {
+  padding: 0.5rem 1rem;
+  background-color: var(--color-accent-bg, rgba(13, 110, 253, 0.1));
+  color: var(--color-accent);
+  border-radius: var(--radius);
+  font-weight: 600;
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
+.tableCard {
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.emptyState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 2rem;
+  text-align: center;
+  min-height: 400px;
+}
+
+.stateIcon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}
+
+.stateTitle {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0 0 0.5rem;
+}
+
+.stateText {
+  color: var(--text-secondary);
+  margin: 0 0 1.5rem;
+  max-width: 400px;
+}
+
+.ctaButtons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.ticketIdCell {
+  font-family: monospace;
+}
+
+.titleCell {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.docIcon {
+  font-size: 1.25rem;
+  flex-shrink: 0;
+}
+
+.titleText {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.deptPill {
+  display: inline-block;
+  padding: 0.35rem 0.75rem;
+  background-color: var(--color-accent-bg, rgba(13, 110, 253, 0.1));
+  color: var(--color-accent);
+  border-radius: 4px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.dateCell {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

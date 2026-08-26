@@ -1,0 +1,396 @@
+/* ============================================================
+   OfficerDashboard.module.css — Work Management Dashboard
+   ============================================================ */
+
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+/* ── Page header ─────────────────────────────────────────── */
+.pageHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+.pageTitle {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--color-text);
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+.pageSubtitle {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  margin: 0.2rem 0 0;
+}
+
+/* ── Welcome strip ───────────────────────────────────────── */
+.welcome {
+  padding: 0.875rem 1.125rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-left: 4px solid var(--color-accent);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-xs);
+}
+
+.greetingText {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin: 0;
+}
+
+.greetingSub {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  margin: 0.15rem 0 0;
+}
+
+/* ── KPI grid ────────────────────────────────────────────── */
+.kpiGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.875rem;
+}
+
+/* ── Panel shell ─────────────────────────────────────────── */
+.panel {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-xs);
+  overflow: hidden;
+  min-width: 0;
+}
+
+.panelHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1rem 0.625rem;
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+.panelTitle {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--color-text);
+  margin: 0;
+}
+
+.panelCount {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  color: var(--color-text-muted);
+  background: var(--color-surface-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  padding: 0.1rem 0.55rem;
+  min-width: 1.5rem;
+  text-align: center;
+}
+
+.panelBody {
+  padding: 1rem;
+}
+
+/* ── Two-column layouts ──────────────────────────────────── */
+.twoCol {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: 0.875rem;
+  align-items: start;
+}
+
+.twoColNarrow {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: 0.875rem;
+  align-items: start;
+}
+
+/* ── Work list ───────────────────────────────────────────── */
+.workList {
+  display: flex;
+  flex-direction: column;
+}
+
+.workItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.8125rem 1rem;
+  border-bottom: 1px solid var(--color-border-light);
+  transition: background var(--transition-fast);
+}
+
+.workItem:last-child { border-bottom: none; }
+.workItem:hover { background: var(--color-surface-2); }
+
+.workItemMain {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.225rem;
+}
+
+.workItemTop {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.ticketId {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  letter-spacing: 0.02em;
+}
+
+.priorityLabel {
+  font-size: 0.6875rem;
+  font-weight: 600;
+}
+
+.workItemSubject {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--color-text);
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.workItemMeta {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  flex-wrap: wrap;
+}
+
+.metaDot {
+  width: 2px;
+  height: 2px;
+  border-radius: 50%;
+  background: var(--color-border-mid);
+  flex-shrink: 0;
+}
+
+.metaTime   { font-size: 0.6875rem; color: var(--color-text-dim); }
+.metaOfficer{ font-size: 0.6875rem; color: var(--color-text-muted); }
+
+.openBtn {
+  flex-shrink: 0;
+  font-size: 0.75rem;
+  min-height: 26px;
+  padding: 0.2rem 0.625rem;
+}
+
+/* ── Shared item row ─────────────────────────────────────── */
+.sharedItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.8125rem 1rem;
+  border-bottom: 1px solid var(--color-border-light);
+  transition: background var(--transition-fast);
+}
+
+.sharedItem:last-child { border-bottom: none; }
+.sharedItem:hover { background: var(--color-surface-2); }
+
+.sharedMain {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.sharedRoute {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.sharedFrom  { color: var(--color-text-muted); }
+.sharedArrow { color: var(--color-text-dim); font-weight: 400; }
+.sharedTo    { color: var(--color-primary); }
+
+.sharedSubject {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--color-text);
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sharedBadge { align-self: flex-start; }
+
+/* ── Workload bars ───────────────────────────────────────── */
+.workloadBars {
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+}
+
+.barRow {
+  display: grid;
+  grid-template-columns: 82px 1fr 28px;
+  align-items: center;
+  gap: 0.625rem;
+}
+
+.barLabel  { font-size: 0.75rem; color: var(--color-text-muted); font-weight: 500; }
+.barTrack  { height: 5px; background: var(--color-border); border-radius: var(--radius-pill); overflow: hidden; }
+.barFill   { height: 100%; border-radius: var(--radius-pill); transition: width 500ms ease; }
+.barCount  { font-size: 0.75rem; font-weight: 700; color: var(--color-text); text-align: right; font-variant-numeric: tabular-nums; }
+
+.workloadTotal {
+  font-size: 0.7rem;
+  color: var(--color-text-dim);
+  margin: 0.75rem 0 0;
+  padding-top: 0.625rem;
+  border-top: 1px solid var(--color-border-light);
+}
+
+/* ── Activity feed ───────────────────────────────────────── */
+.activityList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.activityItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  padding: 0.5625rem 0;
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+.activityItem:last-child { border-bottom: none; }
+
+.activityDot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; margin-top: 0.25rem; }
+
+.activityBody {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.05rem;
+}
+
+.activityTicketId {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  font-family: var(--font-mono);
+}
+
+.activityMsg   { font-size: 0.75rem; color: var(--color-text-muted); }
+.activityTime  { font-size: 0.6875rem; color: var(--color-text-dim); flex-shrink: 0; white-space: nowrap; }
+
+/* ── Recent documents table ──────────────────────────────── */
+.tableWrap { overflow-x: auto; }
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.8125rem;
+}
+
+.table th {
+  padding: 0.5rem 1rem;
+  text-align: left;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  background: var(--color-surface-2);
+  border-bottom: 1px solid var(--color-border);
+  white-space: nowrap;
+}
+
+.table td {
+  padding: 0.5625rem 1rem;
+  color: var(--color-text);
+  border-bottom: 1px solid var(--color-border-light);
+  vertical-align: middle;
+}
+
+.table tbody tr:last-child td { border-bottom: none; }
+.table tbody tr:hover td { background: var(--color-surface-2); }
+
+.docTitle  { font-weight: 500; max-width: 200px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.docDept   { color: var(--color-text-muted); font-size: 0.7875rem; }
+.docDate   { color: var(--color-text-dim); white-space: nowrap; font-size: 0.75rem; }
+
+.badgeManual {
+  background: var(--color-surface-2);
+  color: var(--color-text-muted);
+  border: 1px solid var(--color-border);
+}
+
+/* ── Empty / Loading / Error ─────────────────────────────── */
+.emptyState {
+  font-size: 0.8rem;
+  color: var(--color-text-dim);
+  text-align: center;
+  padding: 1.5rem 1rem;
+  margin: 0;
+}
+
+.centerState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  min-height: 40vh;
+  text-align: center;
+  color: var(--color-text-muted);
+  font-size: 0.875rem;
+}
+
+.errorMsg { color: var(--color-danger); font-weight: 600; }
+
+/* ── Responsive ──────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .twoCol, .twoColNarrow { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 800px) {
+  .kpiGrid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 480px) {
+  .kpiGrid { grid-template-columns: 1fr; }
+}

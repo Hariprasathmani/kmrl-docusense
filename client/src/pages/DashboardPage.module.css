@@ -1,0 +1,20 @@
+/* ============================================================
+   DashboardPage.module.css — Dashboard loading state
+   ============================================================ */
+
+.centerState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  min-height: 40vh;
+  text-align: center;
+  color: var(--color-text-muted);
+}
+
+.stateText {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  margin: 0;
+}

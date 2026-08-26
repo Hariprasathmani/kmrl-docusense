@@ -1,0 +1,334 @@
+/* ============================================================
+   Sidebar.module.css — KMRL DocuSense App Shell Navigation
+   Deep navy professional enterprise sidebar with metro route-line motif
+   ============================================================ */
+
+/* ── Shell ───────────────────────────────────────────────── */
+.sidebar {
+  width: var(--sidebar-width, 244px);
+  flex: 0 0 var(--sidebar-width, 244px);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--color-navy);
+  border-right: 1px solid var(--color-navy-line);
+  overflow-y: auto;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* ── Brand / Product Identity ────────────────────────────── */
+.brand {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding: 20px 16px 0;
+}
+
+.brandTop {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-bottom: 6px;
+}
+
+/* Metro route-line motif near brand */
+.brandMark {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  flex-shrink: 0;
+}
+
+.brandDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  border: 1.5px solid var(--color-accent);
+}
+
+.brandLine {
+  width: 1.5px;
+  height: 14px;
+  background: linear-gradient(to bottom, var(--color-accent), transparent);
+  border-radius: 1px;
+}
+
+.brandText {
+  flex: 1;
+  min-width: 0;
+}
+
+.brandTitle {
+  color: #fff;
+  font-size: 0.9375rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.brandSub {
+  color: var(--color-navy-muted);
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-top: 2px;
+}
+
+/* ── Route-line decorative strip below brand ─────────────── */
+.brandRoute {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 10px 16px 18px;
+  opacity: 0.5;
+}
+
+.routeStop {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  border: 1.5px solid var(--color-navy-muted);
+  flex-shrink: 0;
+}
+
+.routeStopActive {
+  border-color: var(--color-accent);
+  background: var(--color-accent);
+}
+
+.routeSegment {
+  flex: 1;
+  height: 1px;
+  background: var(--color-navy-line);
+}
+
+/* ── Section label ───────────────────────────────────────── */
+.sectionLabel {
+  padding: 0 16px 6px;
+  color: var(--color-navy-muted);
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* ── Navigation ──────────────────────────────────────────── */
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  padding: 0 8px;
+  flex: 1;
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 36px;
+  padding: 0 10px;
+  border-radius: var(--radius-md);
+  color: var(--color-navy-text);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition:
+    background var(--transition-fast),
+    color var(--transition-fast);
+  position: relative;
+}
+
+.link:hover {
+  color: #fff;
+  background: var(--color-navy-dim);
+  text-decoration: none;
+}
+
+.linkActive {
+  color: #fff;
+  background: var(--color-navy-mid);
+  font-weight: 600;
+}
+
+/* Active station marker — left edge accent line */
+.linkActive::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 6px;
+  bottom: 6px;
+  width: 3px;
+  background: var(--color-accent);
+  border-radius: 0 2px 2px 0;
+}
+
+.icon {
+  font-size: 1rem;
+  flex-shrink: 0;
+  opacity: 0.85;
+}
+
+.linkActive .icon {
+  opacity: 1;
+}
+
+/* ── Separator ───────────────────────────────────────────── */
+.navSep {
+  height: 1px;
+  background: var(--color-navy-line);
+  margin: 8px 10px;
+}
+
+/* ── Profile / User footer ───────────────────────────────── */
+.profile {
+  margin-top: auto;
+  padding: 12px 8px 14px;
+  border-top: 1px solid var(--color-navy-line);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.profileInfo {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 0 8px;
+}
+
+.profileAvatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+  font-weight: 800;
+  color: #fff;
+  flex-shrink: 0;
+  text-transform: uppercase;
+}
+
+.profileDetails {
+  flex: 1;
+  min-width: 0;
+}
+
+.profileName {
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 650;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.3;
+}
+
+.profileMeta {
+  color: var(--color-navy-muted);
+  font-size: 0.6875rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-top: 1px;
+}
+
+.logoutBtn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 32px;
+  padding: 0 10px;
+  border-radius: var(--radius-md);
+  color: var(--color-navy-muted);
+  font-size: 0.78rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background var(--transition-fast), color var(--transition-fast);
+  background: none;
+  border: none;
+  width: 100%;
+  text-align: left;
+}
+
+.logoutBtn:hover {
+  background: rgba(185, 28, 28, 0.12);
+  color: #fca5a5;
+}
+
+.logoutIcon {
+  font-size: 0.95rem;
+  flex-shrink: 0;
+}
+
+/* ============================================================
+   MOBILE — compact top navigation bar
+   ============================================================ */
+@media (max-width: 760px) {
+  .sidebar {
+    width: 100%;
+    min-height: auto;
+    flex-direction: row;
+    align-items: center;
+    padding: 0 12px;
+    border-right: none;
+    border-bottom: 1px solid var(--color-navy-line);
+    overflow-x: auto;
+    overflow-y: visible;
+  }
+
+  .brand {
+    padding: 0;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+    margin-right: 12px;
+  }
+
+  .brandTop {
+    padding-bottom: 0;
+  }
+
+  .brandRoute,
+  .brandSub,
+  .sectionLabel,
+  .navSep,
+  .profile,
+  .brandMark,
+  .brandLine {
+    display: none;
+  }
+
+  .nav {
+    flex-direction: row;
+    gap: 2px;
+    padding: 8px 0;
+    flex: 1;
+    overflow-x: auto;
+  }
+
+  .link {
+    min-height: 36px;
+    padding: 0 10px;
+    flex-shrink: 0;
+    white-space: nowrap;
+  }
+
+  .link span {
+    display: none; /* icon-only on mobile */
+  }
+
+  .link::before {
+    display: none;
+  }
+}

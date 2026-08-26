@@ -1,0 +1,76 @@
+/* ============================================================
+   DataTable.module.css — Reusable enterprise data table
+   ============================================================ */
+
+.wrapper {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.8125rem;
+  min-width: 480px;
+}
+
+/* ── Header ──────────────────────────────────────────────── */
+.thead {}
+
+.th {
+  padding: 0.5rem 1rem;
+  text-align: left;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  background: var(--color-surface-2);
+  border-bottom: 1px solid var(--color-border);
+  white-space: nowrap;
+  user-select: none;
+}
+
+/* ── Rows ────────────────────────────────────────────────── */
+.tr {
+  transition: background var(--transition-fast);
+}
+
+.tr:not(:last-child) .td {
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+.tr:last-child .td {
+  border-bottom: none;
+}
+
+.tr:hover .td {
+  background: var(--color-surface-2);
+}
+
+/* ── Cells ───────────────────────────────────────────────── */
+.td {
+  padding: 0.5625rem 1rem;
+  color: var(--color-text);
+  vertical-align: middle;
+  background: var(--color-surface);
+  transition: background var(--transition-fast);
+}
+
+/* ── Clickable rows ──────────────────────────────────────── */
+.trClickable {
+  cursor: pointer;
+}
+
+.trClickable:hover .td {
+  background: var(--color-surface-3);
+}
+
+.trClickable:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: -2px;
+}
+
+.trClickable:active .td {
+  background: var(--color-primary-light);
+}

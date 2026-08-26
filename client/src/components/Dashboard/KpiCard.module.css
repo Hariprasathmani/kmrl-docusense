@@ -1,0 +1,54 @@
+/* ============================================================
+   KpiCard.module.css — Compact enterprise KPI card
+   ============================================================ */
+
+.card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-left: 3px solid var(--kpi-accent, var(--color-primary));
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-xs);
+  padding: 0.875rem 1.125rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  min-width: 0;
+  transition: box-shadow var(--transition-fast);
+}
+
+.card:hover {
+  box-shadow: var(--shadow-sm);
+}
+
+.label {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.value {
+  font-size: 1.875rem;
+  font-weight: 800;
+  color: var(--color-text);
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  margin: 0.3rem 0 0;
+  font-variant-numeric: tabular-nums;
+}
+
+.secondary {
+  font-size: 0.75rem;
+  color: var(--color-text-dim);
+  margin: 0.2rem 0 0;
+}
+
+.secondary strong {
+  color: var(--kpi-accent, var(--color-primary));
+  font-weight: 700;
+}

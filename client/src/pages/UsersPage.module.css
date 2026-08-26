@@ -1,0 +1,308 @@
+/* ============================================================
+   UsersPage.module.css — Admin User Management
+   ============================================================ */
+
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+/* ── Header ──────────────────────────────────────────────── */
+.pageHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+.pageTitle {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--color-text);
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+.pageSubtitle {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  margin-top: 0.2rem;
+}
+
+/* ── Toolbar ─────────────────────────────────────────────── */
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
+.searchWrap {
+  position: relative;
+  flex: 1;
+  min-width: 200px;
+  max-width: 320px;
+}
+
+.searchInput { width: 100%; }
+
+.filterSelect {
+  min-height: 36px;
+  padding: 0 0.75rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  outline: none;
+  cursor: pointer;
+  transition: border-color var(--transition-fast);
+  white-space: nowrap;
+  min-width: 140px;
+}
+
+.filterSelect:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(3, 105, 161, 0.1);
+}
+
+.resultCount {
+  font-size: 0.8rem;
+  color: var(--color-text-dim);
+  white-space: nowrap;
+  margin-left: auto;
+}
+
+/* ── Table card ──────────────────────────────────────────── */
+.tableCard { overflow: hidden; padding: 0; }
+
+/* ── Name cell ───────────────────────────────────────────── */
+.nameCell {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.6875rem;
+  font-weight: 800;
+  color: #fff;
+  flex-shrink: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.nameText  { font-weight: 600; color: var(--color-text); font-size: 0.875rem; }
+.emailText { font-size: 0.75rem; color: var(--color-text-muted); }
+
+/* ── Department pill ─────────────────────────────────────── */
+.deptPill {
+  display: inline-flex;
+  padding: 0.15rem 0.55rem;
+  border-radius: var(--radius-pill);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  background: var(--color-primary-light);
+  color: var(--color-primary-dim);
+  border: 1px solid rgba(3, 105, 161, 0.18);
+  white-space: nowrap;
+}
+
+.dateCell {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  white-space: nowrap;
+}
+
+/* ── Action buttons ──────────────────────────────────────── */
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  flex-wrap: wrap;
+}
+
+.actionBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  padding: 0.25rem 0.6rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.75rem;
+  font-weight: 600;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  background: transparent;
+  font-family: var(--font-sans);
+  white-space: nowrap;
+}
+
+.actionEdit {
+  color: var(--color-primary);
+  border-color: rgba(3, 105, 161, 0.25);
+}
+.actionEdit:hover {
+  background: var(--color-primary-light);
+  border-color: var(--color-primary);
+}
+
+.actionActivate {
+  color: var(--color-success);
+  border-color: rgba(21, 128, 61, 0.25);
+}
+.actionActivate:hover {
+  background: var(--color-success-light);
+  border-color: var(--color-success);
+}
+
+.actionDeactivate {
+  color: var(--color-warning);
+  border-color: rgba(180, 83, 9, 0.25);
+}
+.actionDeactivate:hover {
+  background: var(--color-warning-light);
+  border-color: var(--color-warning);
+}
+
+.actionDelete {
+  color: var(--color-danger);
+  border-color: rgba(185, 28, 28, 0.25);
+}
+.actionDelete:hover {
+  background: var(--color-danger-light);
+  border-color: var(--color-danger);
+}
+
+/* ── Modal form ──────────────────────────────────────────── */
+.formGrid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.fieldGroup {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.fieldLabel {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  letter-spacing: 0.03em;
+}
+
+.fieldReadonly {
+  padding: 0.4375rem 0.75rem;
+  background: var(--color-surface-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  font-size: 0.875rem;
+  color: var(--color-text-dim);
+}
+
+.formActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-3);
+  margin-top: var(--space-2);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--color-border-light);
+}
+
+.errorBanner {
+  padding: var(--space-3) var(--space-4);
+  background: var(--color-danger-light);
+  border: 1px solid rgba(185, 28, 28, 0.2);
+  border-radius: var(--radius-md);
+  color: var(--color-danger-text);
+  font-size: 0.8375rem;
+}
+
+/* ── Confirm modal ───────────────────────────────────────── */
+.confirmText {
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin-bottom: var(--space-6);
+}
+
+.confirmName {
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+/* ── Empty / loading / error states ─────────────────────── */
+.centerState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-4);
+  min-height: 300px;
+  padding: var(--space-12);
+}
+
+.stateIcon  { font-size: 2.5rem; }
+.stateTitle { font-size: 1.125rem; font-weight: 700; color: var(--color-text); margin: 0; }
+.stateText  { color: var(--color-text-muted); font-size: 0.875rem; text-align: center; margin: 0; }
+
+.emptyState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  padding: var(--space-12);
+  text-align: center;
+}
+
+/* ── Toast ───────────────────────────────────────────────── */
+.toast {
+  position: fixed;
+  bottom: var(--space-8);
+  right: var(--space-8);
+  z-index: 2000;
+  padding: var(--space-3) var(--space-5);
+  border-radius: var(--radius-md);
+  font-size: 0.875rem;
+  font-weight: 500;
+  box-shadow: var(--shadow-lg);
+  animation: slideUp 0.25s ease forwards;
+  max-width: 360px;
+}
+
+.toastSuccess {
+  background: var(--color-success-light);
+  border: 1px solid rgba(21, 128, 61, 0.25);
+  color: var(--color-success-text);
+}
+
+.toastError {
+  background: var(--color-danger-light);
+  border: 1px solid rgba(185, 28, 28, 0.25);
+  color: var(--color-danger-text);
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}

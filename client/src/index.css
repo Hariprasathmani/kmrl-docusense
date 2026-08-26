@@ -1,0 +1,578 @@
+/* ============================================================
+   KMRL DocuSense — Global Design System
+   Professional Metro / Enterprise Visual Identity
+   Light-mode, clean, restrained, transportation-inspired.
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+:root {
+  /* ── Application backgrounds ─────────────────────────── */
+  --color-bg:          #f0f4f8;        /* muted blue-grey page bg */
+  --color-bg-2:        #e8edf3;        /* slightly deeper bg for contrast zones */
+  --color-surface:     #ffffff;        /* card / panel surface */
+  --color-surface-2:   #f7f9fc;        /* table header, input bg, subtle fills */
+  --color-surface-3:   #eef2f7;        /* hover states, striped rows */
+
+  /* ── Borders ──────────────────────────────────────────── */
+  --color-border:       #d1dbe6;
+  --color-border-light: #e4eaf2;
+  --color-border-mid:   #bfcbd8;
+
+  /* ── KMRL Navy — sidebar / navigation ────────────────── */
+  --color-navy:       #0d1f2d;   /* deepest navy — sidebar bg */
+  --color-navy-mid:   #152637;   /* active nav item bg */
+  --color-navy-dim:   #1e3547;   /* hover nav item bg */
+  --color-navy-line:  #2a4560;   /* sidebar separator / divider */
+  --color-navy-text:  #c8dae8;   /* sidebar primary text */
+  --color-navy-muted: #7a9ab5;   /* sidebar secondary text */
+
+  /* ── Primary accent — KMRL Teal/Cyan ─────────────────── */
+  /* Inspired by Kochi Metro's teal/blue-green identity */
+  --color-primary:      #0369a1;   /* deep sky blue — primary action */
+  --color-primary-dim:  #075985;   /* hover / pressed */
+  --color-primary-light:#e0f2fe;   /* badge bg, tinted bg */
+  --color-primary-text: #0369a1;   /* text on light bg */
+
+  /* ── Secondary accent — metro cyan ───────────────────── */
+  --color-accent:       #0891b2;   /* vibrant cyan accent */
+  --color-accent-dim:   #0e7490;
+  --color-accent-light: #ecfeff;
+  --color-accent-2:     #0284c7;   /* blue variant */
+
+  /* ── Semantic status colors ───────────────────────────── */
+  --color-success:       #15803d;
+  --color-success-light: #dcfce7;
+  --color-success-text:  #14532d;
+
+  --color-warning:       #b45309;
+  --color-warning-light: #fef3c7;
+  --color-warning-text:  #92400e;
+
+  --color-danger:        #b91c1c;
+  --color-danger-light:  #fee2e2;
+  --color-danger-text:   #7f1d1d;
+
+  --color-info:          #1d4ed8;
+  --color-info-light:    #dbeafe;
+  --color-info-text:     #1e3a8a;
+
+  /* ── Status semantic mapping ──────────────────────────── */
+  /* Pending    → warning amber */
+  /* In Progress → primary blue */
+  /* Shared     → accent cyan */
+  /* Resolved   → success green */
+  /* High Prio  → danger red */
+  /* Closed     → muted grey */
+
+  /* ── Typography colors ────────────────────────────────── */
+  --color-text:       #0f1e2d;   /* primary heading / body */
+  --color-text-muted: #4a6279;   /* secondary text */
+  --color-text-dim:   #8aa3b8;   /* placeholder, metadata */
+  --color-text-on-dark: #e8f1f8; /* text on navy backgrounds */
+
+  /* ── Typography scale ─────────────────────────────────── */
+  --font-sans:    'Inter', 'Segoe UI', system-ui, -apple-system, Arial, sans-serif;
+  --font-display: 'Inter', 'Segoe UI', system-ui, Arial, sans-serif;
+  --font-mono:    'SFMono-Regular', 'Cascadia Code', 'Fira Code', Consolas, monospace;
+
+  /* ── Spacing ──────────────────────────────────────────── */
+  --space-1:  0.25rem;
+  --space-2:  0.5rem;
+  --space-3:  0.75rem;
+  --space-4:  1rem;
+  --space-5:  1.25rem;
+  --space-6:  1.5rem;
+  --space-8:  2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+
+  /* ── Radii ────────────────────────────────────────────── */
+  --radius-sm: 3px;
+  --radius-md: 5px;
+  --radius-lg: 8px;
+  --radius-xl: 12px;
+  --radius-pill: 999px;
+
+  /* ── Shadows ──────────────────────────────────────────── */
+  --shadow-xs: 0 1px 2px rgba(13, 31, 45, 0.06);
+  --shadow-sm: 0 1px 3px rgba(13, 31, 45, 0.08), 0 1px 2px rgba(13, 31, 45, 0.04);
+  --shadow-md: 0 4px 6px -1px rgba(13, 31, 45, 0.08), 0 2px 4px -1px rgba(13, 31, 45, 0.05);
+  --shadow-lg: 0 10px 15px -3px rgba(13, 31, 45, 0.08), 0 4px 6px -2px rgba(13, 31, 45, 0.04);
+  --shadow-xl: 0 20px 25px -5px rgba(13, 31, 45, 0.1), 0 10px 10px -5px rgba(13, 31, 45, 0.04);
+
+  /* ── Transitions ──────────────────────────────────────── */
+  --transition-fast: 120ms ease;
+  --transition-base: 180ms ease;
+  --transition-slow: 300ms ease;
+
+  /* ── Sidebar dimensions ───────────────────────────────── */
+  --sidebar-width: 244px;
+  --topbar-height: 56px;
+}
+
+/* ============================================================
+   RESET & BASE
+   ============================================================ */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  color: var(--color-text);
+  background: var(--color-bg);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+button, input, select, textarea {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--color-primary-dim);
+  text-decoration: underline;
+}
+
+img, svg {
+  display: block;
+  max-width: 100%;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  line-height: 1.25;
+  color: var(--color-text);
+}
+
+p {
+  margin: 0;
+}
+
+ul, ol {
+  margin: 0;
+  padding: 0;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* ============================================================
+   TYPOGRAPHY UTILITIES
+   ============================================================ */
+
+.text-xs    { font-size: 0.6875rem; }
+.text-sm    { font-size: 0.8125rem; }
+.text-base  { font-size: 0.875rem; }
+.text-md    { font-size: 1rem; }
+.text-lg    { font-size: 1.125rem; }
+.text-xl    { font-size: 1.25rem; }
+.text-2xl   { font-size: 1.5rem; }
+.text-muted { color: var(--color-text-muted); }
+.text-dim   { color: var(--color-text-dim); }
+.font-mono  { font-family: var(--font-mono); }
+
+/* ============================================================
+   LAYOUT UTILITIES
+   ============================================================ */
+
+.container {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 var(--space-6);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ============================================================
+   GLASS CARD — main panel surface
+   ============================================================ */
+
+.glass-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+/* ============================================================
+   BUTTONS
+   ============================================================ */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  min-height: 34px;
+  padding: 0.45rem 0.875rem;
+  border: 1px solid transparent;
+  border-radius: var(--radius-md);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+  cursor: pointer;
+  transition:
+    background var(--transition-fast),
+    border-color var(--transition-fast),
+    color var(--transition-fast),
+    box-shadow var(--transition-fast);
+  text-decoration: none;
+}
+
+.btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.btn-primary {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: #fff;
+}
+.btn-primary:not(:disabled):hover {
+  background: var(--color-primary-dim);
+  border-color: var(--color-primary-dim);
+  color: #fff;
+  text-decoration: none;
+}
+
+.btn-ghost {
+  background: var(--color-surface);
+  border-color: var(--color-border);
+  color: var(--color-text-muted);
+}
+.btn-ghost:not(:disabled):hover {
+  background: var(--color-surface-2);
+  border-color: var(--color-border-mid);
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+.btn-danger {
+  background: var(--color-danger);
+  border-color: var(--color-danger);
+  color: #fff;
+}
+.btn-danger:not(:disabled):hover {
+  background: var(--color-danger-text);
+  border-color: var(--color-danger-text);
+  color: #fff;
+  text-decoration: none;
+}
+
+.btn-sm {
+  min-height: 28px;
+  padding: 0.25rem 0.625rem;
+  font-size: 0.75rem;
+}
+
+.btn-lg {
+  min-height: 42px;
+  padding: 0.625rem 1.25rem;
+  font-size: 0.9375rem;
+}
+
+/* ============================================================
+   FORM INPUTS
+   ============================================================ */
+
+.input {
+  width: 100%;
+  min-height: 36px;
+  padding: 0.4375rem 0.75rem;
+  color: var(--color-text);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  font-size: 0.875rem;
+  outline: none;
+  transition:
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+.input:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(3, 105, 161, 0.12);
+}
+
+.input::placeholder {
+  color: var(--color-text-dim);
+}
+
+.input:disabled {
+  background: var(--color-surface-2);
+  color: var(--color-text-dim);
+  cursor: not-allowed;
+}
+
+/* ============================================================
+   BADGES — enterprise light-mode semantic badges
+   ============================================================ */
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  min-height: 20px;
+  padding: 0 0.5rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  border: 1px solid transparent;
+}
+
+/* Generic colour variants */
+.badge-blue {
+  background: var(--color-primary-light);
+  color: var(--color-primary-text);
+  border-color: rgba(3, 105, 161, 0.2);
+}
+
+.badge-green {
+  background: var(--color-success-light);
+  color: var(--color-success-text);
+  border-color: rgba(21, 128, 61, 0.2);
+}
+
+.badge-yellow {
+  background: var(--color-warning-light);
+  color: var(--color-warning-text);
+  border-color: rgba(180, 83, 9, 0.2);
+}
+
+.badge-red {
+  background: var(--color-danger-light);
+  color: var(--color-danger-text);
+  border-color: rgba(185, 28, 28, 0.2);
+}
+
+.badge-cyan {
+  background: var(--color-accent-light);
+  color: var(--color-accent-dim);
+  border-color: rgba(8, 145, 178, 0.2);
+}
+
+.badge-grey {
+  background: var(--color-surface-2);
+  color: var(--color-text-muted);
+  border-color: var(--color-border);
+}
+
+/* ── Status-specific semantic badges ──────────────────────── */
+/* Ticket statuses */
+.badge-status-new        { background: var(--color-primary-light); color: var(--color-primary-text); border-color: rgba(3,105,161,0.2); }
+.badge-status-assigned   { background: var(--color-info-light);    color: var(--color-info-text);    border-color: rgba(29,78,216,0.2); }
+.badge-status-inprogress { background: var(--color-warning-light); color: var(--color-warning-text); border-color: rgba(180,83,9,0.2); }
+.badge-status-shared     { background: var(--color-accent-light);  color: var(--color-accent-dim);   border-color: rgba(8,145,178,0.2); }
+.badge-status-returned   { background: var(--color-danger-light);  color: var(--color-danger-text);  border-color: rgba(185,28,28,0.2); }
+.badge-status-resolved   { background: var(--color-success-light); color: var(--color-success-text); border-color: rgba(21,128,61,0.2); }
+.badge-status-closed     { background: var(--color-surface-2);     color: var(--color-text-muted);   border-color: var(--color-border); }
+
+/* Priority badges */
+.badge-priority-critical { background: var(--color-danger-light);  color: var(--color-danger-text);  border-color: rgba(185,28,28,0.25); }
+.badge-priority-high     { background: #fff7ed;                    color: #9a3412;                   border-color: rgba(154,52,18,0.2); }
+.badge-priority-medium   { background: var(--color-warning-light); color: var(--color-warning-text); border-color: rgba(180,83,9,0.2); }
+.badge-priority-low      { background: var(--color-success-light); color: var(--color-success-text); border-color: rgba(21,128,61,0.2); }
+
+/* ============================================================
+   DEPARTMENT PILL — consistent across all pages
+   ============================================================ */
+
+.dept-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.15rem 0.6rem;
+  border-radius: var(--radius-pill);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  background: rgba(3, 105, 161, 0.08);
+  color: var(--color-primary-dim);
+  border: 1px solid rgba(3, 105, 161, 0.18);
+  white-space: nowrap;
+}
+
+/* ============================================================
+   METRO ROUTE-LINE MOTIF — global utility classes
+   Subtle station-marker system for timelines and workflow
+   ============================================================ */
+
+/* Station marker dot */
+.route-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--color-surface);
+  border: 2px solid var(--color-primary);
+  flex-shrink: 0;
+  position: relative;
+  z-index: 2;
+}
+
+.route-dot-active {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.route-dot-success {
+  background: var(--color-success);
+  border-color: var(--color-success);
+}
+
+.route-dot-accent {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+}
+
+.route-dot-warning {
+  background: var(--color-warning);
+  border-color: var(--color-warning);
+}
+
+.route-dot-danger {
+  background: var(--color-danger);
+  border-color: var(--color-danger);
+}
+
+.route-dot-muted {
+  background: var(--color-text-dim);
+  border-color: var(--color-text-dim);
+}
+
+/* Vertical connecting line segment */
+.route-line {
+  width: 1px;
+  background: var(--color-border);
+  flex-shrink: 0;
+  align-self: stretch;
+}
+
+/* Route-line timeline container */
+.route-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.route-timeline-item {
+  display: flex;
+  gap: var(--space-4);
+  position: relative;
+}
+
+/* Connector between station markers */
+.route-timeline-item::before {
+  content: '';
+  position: absolute;
+  left: 4px; /* center of 10px dot */
+  top: 14px;
+  bottom: -4px;
+  width: 1px;
+  background: var(--color-border);
+  z-index: 1;
+}
+
+.route-timeline-item:last-child::before {
+  display: none;
+}
+
+/* ============================================================
+   PAGE TRANSITIONS
+   ============================================================ */
+
+.page-enter {
+  animation: pageEnter 160ms ease-out both;
+}
+
+@keyframes pageEnter {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ============================================================
+   SCROLLBAR STYLING
+   ============================================================ */
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border-mid);
+  border: 2px solid transparent;
+  background-clip: padding-box;
+  border-radius: var(--radius-pill);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a8b9cc;
+  background-clip: padding-box;
+}
+
+/* ============================================================
+   RESPONSIVE BASE
+   ============================================================ */
+
+@media (max-width: 640px) {
+  .container {
+    padding: 0 var(--space-4);
+  }
+}

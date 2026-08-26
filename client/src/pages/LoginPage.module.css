@@ -1,0 +1,232 @@
+/* ============================================================
+   LoginPage.module.css — KMRL DocuSense Authentication
+   Split-panel: 40% metro visual | 60% clean form
+   ============================================================ */
+
+/* ── Full-page container ─────────────────────────────────── */
+.layout {
+  min-height: 100vh;
+  display: flex;
+  background: var(--color-bg);
+}
+
+/* ── LEFT PANEL — metro visual ───────────────────────────── */
+.visual {
+  flex: 0 0 40%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 2.5rem;
+  overflow: hidden;
+
+  /* Metro background image */
+  background: url('/assets/metro-bg.jpg') center / cover no-repeat;
+}
+
+/* Dark overlay for legibility */
+.visual::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    160deg,
+    rgba(10, 18, 28, 0.88) 0%,
+    rgba(10, 18, 28, 0.70) 100%
+  );
+  z-index: 0;
+}
+
+/* Fallback if image fails */
+.visual::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--color-navy);
+  z-index: -1;
+}
+
+.visualContent {
+  position: relative;
+  z-index: 1;
+}
+
+.visualBrand {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.5rem;
+}
+
+.visualTagline {
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.65);
+  line-height: 1.55;
+  max-width: 280px;
+}
+
+/* Metro route-line decorative footer motif */
+.visualRoute {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 1.75rem;
+  opacity: 0.5;
+}
+
+.visualRouteDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255, 255, 255, 0.7);
+  flex-shrink: 0;
+}
+
+.visualRouteDotActive {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+}
+
+.visualRouteSegment {
+  flex: 1;
+  max-width: 28px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* ── RIGHT PANEL — form ──────────────────────────────────── */
+.formPanel {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background: var(--color-surface);
+}
+
+.card {
+  width: 100%;
+  max-width: 420px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+/* ── Form header ─────────────────────────────────────────── */
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: 1.375rem;
+  font-weight: 800;
+  color: var(--color-text);
+  letter-spacing: -0.02em;
+}
+
+.subtitle {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+}
+
+/* ── Form body ───────────────────────────────────────────── */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.125rem;
+}
+
+.fieldGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+}
+
+.label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  letter-spacing: 0.01em;
+}
+
+/* ── Error alert ─────────────────────────────────────────── */
+.errorAlert {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.625rem;
+  padding: 0.75rem 1rem;
+  background: var(--color-danger-light);
+  border: 1px solid rgba(185, 28, 28, 0.2);
+  border-radius: var(--radius-md);
+  color: var(--color-danger-text);
+  font-size: 0.8375rem;
+  line-height: 1.4;
+}
+
+/* ── Submit button ───────────────────────────────────────── */
+.submitBtn {
+  width: 100%;
+  justify-content: center;
+  min-height: 40px;
+  font-size: 0.9rem;
+  margin-top: 0.25rem;
+}
+
+/* ── Toggle ──────────────────────────────────────────────── */
+.footer {
+  text-align: center;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--color-border-light);
+}
+
+.toggleBtn {
+  background: none;
+  border: none;
+  padding: 0;
+  color: var(--color-text-muted);
+  font-size: 0.8375rem;
+  cursor: pointer;
+  transition: color var(--transition-fast);
+}
+
+.toggleBtn:hover {
+  color: var(--color-primary);
+}
+
+/* ── MOBILE — stack vertically ───────────────────────────── */
+@media (max-width: 768px) {
+  .layout {
+    flex-direction: column;
+  }
+
+  .visual {
+    flex: none;
+    min-height: 140px;
+    max-height: 160px;
+    padding: 1.25rem 1.5rem;
+    justify-content: flex-end;
+  }
+
+  .visualTagline {
+    display: none;
+  }
+
+  .visualRoute {
+    display: none;
+  }
+
+  .formPanel {
+    padding: 2rem 1.25rem;
+    align-items: flex-start;
+    padding-top: 2rem;
+  }
+
+  .card {
+    max-width: 100%;
+  }
+}

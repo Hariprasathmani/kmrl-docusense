@@ -1,0 +1,289 @@
+/* EmployeeDashboard.module.css — Employee dashboard styles */
+
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  padding: var(--space-4);
+  max-width: 1200px;
+  margin: 0 auto;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.centerState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  gap: var(--space-4);
+}
+
+.stateText {
+  color: var(--color-text-dim);
+  font-size: 0.95rem;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--space-6);
+}
+
+.headerActions {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--color-text);
+  margin: 0;
+}
+
+.subtitle {
+  color: var(--color-text-dim);
+  margin: var(--space-2) 0 0;
+  font-size: 0.95rem;
+}
+
+.errorBox {
+  display: flex;
+  gap: var(--space-3);
+  align-items: flex-start;
+  padding: var(--space-4);
+  background-color: rgba(220, 38, 38, 0.08);
+  border: 1px solid var(--color-danger);
+  border-radius: var(--radius-md);
+  color: var(--color-danger);
+  font-size: 0.9rem;
+}
+
+.errorBox p {
+  margin: 0;
+}
+
+/* KPI Grid */
+.kpiGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--space-4);
+  margin: var(--space-2) 0;
+}
+
+/* Sections */
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.sectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.sectionTitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--color-text);
+  margin: 0;
+}
+
+/* Empty state */
+.emptyState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  padding: var(--space-8) var(--space-4);
+  text-align: center;
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.05), rgba(139, 92, 246, 0.05));
+  border-radius: var(--radius-lg);
+  border: 2px dashed var(--border-color);
+}
+
+.emptyState > span {
+  font-size: 3rem;
+}
+
+.emptyState p {
+  color: var(--color-text-dim);
+  font-size: 1.05rem;
+  margin: 0;
+}
+
+/* Tickets List */
+.ticketsList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.ticketCard {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-4);
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.ticketCard:hover {
+  border-color: var(--color-accent);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.1);
+  transform: translateY(-2px);
+}
+
+.ticketHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.ticketId {
+  font-family: 'Monaco', 'Courier New', monospace;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-accent);
+}
+
+.ticketTitle {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--color-text);
+  margin: 0;
+  line-height: 1.4;
+  word-break: break-word;
+}
+
+.ticketMeta {
+  display: flex;
+  gap: var(--space-3);
+  font-size: 0.85rem;
+  color: var(--color-text-dim);
+  flex-wrap: wrap;
+}
+
+.metaDept,
+.metaDate {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+/* CTA Section */
+.ctaSection {
+  margin-top: var(--space-4);
+}
+
+.ctaCard {
+  padding: var(--space-6);
+  background: linear-gradient(135deg, var(--color-accent-light), rgba(139, 92, 246, 0.1));
+  border-radius: var(--radius-lg);
+  border: 2px solid var(--color-accent);
+  text-align: center;
+}
+
+.ctaCard h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--color-text);
+  margin: 0 0 var(--space-2) 0;
+}
+
+.ctaCard p {
+  color: var(--color-text-dim);
+  margin: 0 0 var(--space-4) 0;
+  font-size: 0.95rem;
+}
+
+/* Status badges */
+.badge {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 0.25rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.statusNew {
+  background-color: rgba(99, 102, 241, 0.2);
+  color: #4f46e5;
+}
+
+.statusAssigned {
+  background-color: rgba(59, 130, 246, 0.2);
+  color: #3b82f6;
+}
+
+.statusInProgress {
+  background-color: rgba(251, 146, 60, 0.2);
+  color: #fb923c;
+}
+
+.statusShared {
+  background-color: rgba(168, 85, 247, 0.2);
+  color: #a855f7;
+}
+
+.statusResolved {
+  background-color: rgba(34, 197, 94, 0.2);
+  color: #22c55e;
+}
+
+.statusClosed {
+  background-color: rgba(107, 114, 128, 0.2);
+  color: #6b7280;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .page {
+    gap: var(--space-4);
+    padding: var(--space-3);
+  }
+
+  .title {
+    font-size: 1.5rem;
+  }
+
+  .sectionHeader {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .kpiGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .ticketCard {
+    padding: var(--space-3);
+  }
+
+  .ticketHeader {
+    flex-wrap: wrap;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
