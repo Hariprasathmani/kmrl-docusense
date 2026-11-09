@@ -1,23 +1,19 @@
-// pages/DocumentsPage.jsx — KMRL DocuSense · Document list
+// pages/DocumentsPage.jsx — KMRL DocuSense · Document list with Lucide icons
 import { useState, useEffect, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { FileText, Plus, Search, AlertTriangle, Inbox, Trash2 } from 'lucide-react';
 import { documentService } from '../services/documentService';
 import { useAuth } from '../context/AuthContext';
 import DataTable from '../components/UI/DataTable';
 import Badge from '../components/UI/Badge';
+import DepartmentBadge from '../components/UI/DepartmentBadge';
+import StatusBadge from '../components/UI/StatusBadge';
 import Spinner from '../components/UI/Spinner';
+import EmptyState from '../components/UI/EmptyState';
+import PageHeader from '../components/UI/PageHeader';
 import styles from './DocumentsPage.module.css';
 
 // ─── Helpers ─────────────────────────────────────────────────────────────────
-
-/** Map document status → Badge variant key */
-const STATUS_VARIANT = {
-  pending: 'pending',
-  processing: 'processing',
-  routed: 'completed',
-  completed: 'completed',
-  failed: 'failed',
-};
 
 /** Format ISO date string to readable locale date */
 function fmtDate(iso) {
@@ -59,7 +55,7 @@ const COLUMNS = [
     label: 'Title',
     render: (row) => (
       <span className={styles.titleCell}>
-        <span className={styles.docIcon} aria-hidden="true">📄</span>
+        <FileText size={16} className={styles.docIcon} aria-hidden="true" />
         <span className={styles.titleText}>{row.title ?? row.filename ?? '—'}</span>
       </span>
     ),
@@ -68,7 +64,7 @@ const COLUMNS = [
     key: 'department',
     label: 'Department',
     render: (row) => (
-      <span className={styles.deptPill}>{row.department ?? '—'}</span>
+      row.department ? <DepartmentBadge department={row.department} /> : <span>—</span>
     ),
   },
   {
@@ -84,10 +80,7 @@ const COLUMNS = [
     key: 'status',
     label: 'Status',
     render: (row) => (
-      <Badge
-        label={(row.status ?? '—').replace(/^\w/, (c) => c.toUpperCase())}
-        variant={STATUS_VARIANT[row.status] ?? 'processing'}
-      />
+      <StatusBadge status={row.status ?? 'pending'} />
     ),
   },
   {
@@ -198,7 +191,7 @@ export default function DocumentsPage() {
   if (error) {
     return (
       <section className={`page-enter ${styles.centerState}`} role="alert">
-        <span className={styles.stateIcon} aria-hidden="true">⚠️</span>
+        <AlertTriangle size={32} className={styles.stateIcon} />
         <h2 className={styles.stateTitle}>Could not load documents</h2>
         <p className={styles.stateText}>{error}</p>
         <button
@@ -217,26 +210,25 @@ export default function DocumentsPage() {
     <section className={`page-enter ${styles.page}`}>
 
       {/* Header row */}
-      <header className={styles.pageHeader}>
-        <div>
-          <h1 className={styles.pageTitle}>Documents</h1>
-          <p className={styles.pageSubtitle}>
-            {documents.length} document{documents.length !== 1 ? 's' : ''} in the system
-          </p>
-        </div>
-
-        <button
-          className="btn btn-primary"
-          onClick={() => navigate('/upload')}
-          aria-label="Upload new document"
-        >
-          <span aria-hidden="true">＋</span> Upload
-        </button>
-      </header>
+      <PageHeader
+        title="Documents"
+        subtitle={`${documents.length} document${documents.length !== 1 ? 's' : ''} in the system`}
+        actions={
+          <button
+            className="btn btn-primary"
+            onClick={() => navigate('/upload')}
+            aria-label="Upload new document"
+          >
+            <Plus size={16} aria-hidden="true" />
+            Upload
+          </button>
+        }
+      />
 
       {/* Search bar */}
       <div className={styles.toolbar}>
         <div className={styles.searchWrap}>
+          <Search size={16} className={styles.searchIcon} aria-hidden="true" />
           <input
             id="documents-search"
             type="search"
@@ -255,37 +247,24 @@ export default function DocumentsPage() {
 
       {/* Table or empty state */}
       {filtered.length === 0 ? (
-        <div className={`glass-card ${styles.emptyState}`} role="status">
-          <span className={styles.stateIcon} aria-hidden="true">
-            {search ? '🔎' : '📭'}
-          </span>
-          <h2 className={styles.stateTitle}>
-            {search ? 'No documents match your search' : 'No documents yet'}
-          </h2>
-          <p className={styles.stateText}>
-            {search
-              ? 'Try a different search term or clear the filter.'
-              : 'Upload your first document to get started.'}
-          </p>
-          {!search && (
-            <button
-              className="btn btn-primary"
-              onClick={() => navigate('/upload')}
-              style={{ marginTop: '1.25rem' }}
-            >
-              Upload Document
-            </button>
-          )}
-          {search && (
-            <button
-              className="btn btn-ghost"
-              onClick={() => setSearch('')}
-              style={{ marginTop: '1.25rem' }}
-            >
-              Clear Search
-            </button>
-          )}
-        </div>
+        <EmptyState
+          title={search ? 'No documents match your search' : 'No documents yet'}
+          description={search
+            ? 'Try a different search term or clear the filter.'
+            : 'Upload your first document to get started.'}
+          Icon={search ? Search : Inbox}
+          action={
+            !search && (
+              <button
+                className="btn btn-primary"
+                onClick={() => navigate('/upload')}
+              >
+                <Plus size={16} aria-hidden="true" />
+                Upload Document
+              </button>
+            )
+          }
+        />
       ) : (
         <div className={`glass-card ${styles.tableCard}`}>
           <DataTable
@@ -305,6 +284,7 @@ export default function DocumentsPage() {
                     style={{ fontSize: '0.75rem', padding: '0.25rem 0.6rem' }}
                     title="Delete this document"
                   >
+                    <Trash2 size={14} aria-hidden="true" />
                     {deleting === row._id ? 'Deleting…' : 'Delete'}
                   </button>
                 ),

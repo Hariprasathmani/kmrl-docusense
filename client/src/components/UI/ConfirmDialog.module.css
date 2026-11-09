@@ -1,0 +1,112 @@
+/* ConfirmDialog.module.css */
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(13, 31, 45, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: overlayFadeIn 120ms ease-out;
+}
+
+@keyframes overlayFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.dialog {
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-xl);
+  max-width: 400px;
+  width: 90%;
+  animation: dialogSlideUp 120ms ease-out;
+}
+
+@keyframes dialogSlideUp {
+  from {
+    transform: translateY(12px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.header {
+  padding: var(--space-6);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin: 0;
+}
+
+.body {
+  padding: var(--space-6);
+}
+
+.message {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.footer {
+  padding: var(--space-6);
+  border-top: 1px solid var(--color-border);
+  display: flex;
+  gap: var(--space-3);
+  justify-content: flex-end;
+}
+
+.button {
+  min-height: 36px;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-md);
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: all var(--transition-fast);
+}
+
+.buttonCancel {
+  background: var(--color-surface-2);
+  border-color: var(--color-border);
+  color: var(--color-text-muted);
+}
+
+.buttonCancel:hover {
+  background: var(--color-surface-3);
+  border-color: var(--color-border-mid);
+}
+
+.buttonConfirm {
+  background: var(--color-primary);
+  color: white;
+}
+
+.buttonConfirm:hover {
+  background: var(--color-primary-dim);
+}
+
+.buttonDanger {
+  background: var(--color-danger);
+  color: white;
+}
+
+.buttonDanger:hover {
+  background: var(--color-danger-text);
+}

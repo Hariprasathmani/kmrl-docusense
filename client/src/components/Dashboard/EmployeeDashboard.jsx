@@ -1,8 +1,10 @@
-// components/Dashboard/EmployeeDashboard.jsx — Employee/Requester dashboard
+// components/Dashboard/EmployeeDashboard.jsx — Employee/Requester dashboard with Lucide icons
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Ticket, Hourglass, CheckCircle2, Inbox, FileText, Building2 } from 'lucide-react';
 import { ticketService } from '../../services/ticketService';
 import KpiCard from './KpiCard';
+import StatusBadge from '../UI/StatusBadge';
 import Spinner from '../UI/Spinner';
 import styles from './EmployeeDashboard.module.css';
 
@@ -12,18 +14,6 @@ function fmtDate(iso) {
     day: '2-digit', month: 'short', year: 'numeric',
     hour: '2-digit', minute: '2-digit',
   });
-}
-
-function StatusBadge({ status }) {
-  const statusClass = {
-    'New': 'status-new',
-    'Assigned': 'status-assigned',
-    'In Progress': 'status-in-progress',
-    'Shared': 'status-shared',
-    'Resolved': 'status-resolved',
-    'Closed': 'status-closed',
-  };
-  return <span className={`badge ${statusClass[status] || 'status-new'}`}>{status}</span>;
 }
 
 export default function EmployeeDashboard() {
@@ -115,19 +105,22 @@ export default function EmployeeDashboard() {
           label="Open Requests"
           value={stats.open}
           trend={null}
-          icon="📋"
+          Icon={Ticket}
+          accent="var(--color-primary)"
         />
         <KpiCard
           label="In Progress"
           value={stats.inProgress}
           trend={null}
-          icon="⏳"
+          Icon={Hourglass}
+          accent="var(--color-warning)"
         />
         <KpiCard
           label="Resolved"
           value={stats.resolved}
           trend={null}
-          icon="✓"
+          Icon={CheckCircle2}
+          accent="var(--color-success)"
         />
       </div>
 
@@ -146,7 +139,7 @@ export default function EmployeeDashboard() {
 
         {recentTickets.length === 0 ? (
           <div className={styles.emptyState}>
-            <span aria-hidden="true">📭</span>
+            <Inbox size={32} aria-hidden="true" className={styles.emptyIcon} />
             <p>No requests yet</p>
             <button className="btn btn-primary" onClick={() => navigate('/upload')}>
               Create Your First Request
@@ -172,7 +165,8 @@ export default function EmployeeDashboard() {
                 </h3>
                 <div className={styles.ticketMeta}>
                   <span className={styles.metaDept}>
-                    🏢 {ticket.department}
+                    <Building2 size={14} aria-hidden="true" className={styles.metaIcon} />
+                    {ticket.department}
                   </span>
                   <span className={styles.metaDate}>
                     {fmtDate(ticket.updatedAt || ticket.createdAt)}
@@ -188,7 +182,8 @@ export default function EmployeeDashboard() {
       {recentTickets.length === 0 && (
         <div className={styles.ctaSection}>
           <div className={styles.ctaCard}>
-            <h3>📄 Submit a Request</h3>
+            <FileText size={32} aria-hidden="true" className={styles.ctaIcon} />
+            <h3>Submit a Request</h3>
             <p>Upload a document or submit a request to get assistance from our departments.</p>
             <button className="btn btn-primary" onClick={() => navigate('/upload')}>
               Get Started

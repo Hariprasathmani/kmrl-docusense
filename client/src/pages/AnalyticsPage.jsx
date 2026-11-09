@@ -1,4 +1,4 @@
-// pages/AnalyticsPage.jsx — KMRL DocuSense · System-wide Analytics (Admin Only)
+// pages/AnalyticsPage.jsx — KMRL DocuSense · System-wide Analytics (Admin Only) with Lucide icons
 import { useState, useEffect } from 'react';
 import {
   ResponsiveContainer,
@@ -15,7 +15,16 @@ import {
   CartesianGrid,
   Legend,
 } from 'recharts';
-import { RiRefreshLine } from 'react-icons/ri';
+import {
+  RefreshCw,
+  Files,
+  Zap,
+  Hourglass,
+  Target,
+  Ticket,
+  Bell,
+  CheckCircle2,
+} from 'lucide-react';
 import analyticsService from '../services/analyticsService';
 import StatCard from '../components/UI/StatCard';
 import Spinner from '../components/UI/Spinner';
@@ -201,7 +210,7 @@ export default function AnalyticsPage() {
           onClick={fetchAnalytics}
           title="Refresh analytics data"
         >
-          <RiRefreshLine />
+          <RefreshCw size={16} aria-hidden="true" />
           Refresh
         </button>
       </header>
@@ -221,25 +230,25 @@ export default function AnalyticsPage() {
             <StatCard
               label="Total Documents"
               value={documents.total?.toLocaleString() ?? 0}
-              icon="🗂️"
+              Icon={Files}
               accent="var(--color-primary)"
             />
             <StatCard
               label="Processed"
               value={(documents.routed + documents.completed)?.toLocaleString() ?? 0}
-              icon="⚡"
+              Icon={Zap}
               accent="var(--color-success)"
             />
             <StatCard
               label="Pending"
               value={documents.pending?.toLocaleString() ?? 0}
-              icon="⏳"
+              Icon={Hourglass}
               accent="var(--color-warning)"
             />
             <StatCard
               label="Avg Confidence"
               value={`${averageConfidence}%`}
-              icon="🎯"
+              Icon={Target}
               accent="var(--color-accent)"
             />
           </div>
@@ -249,19 +258,19 @@ export default function AnalyticsPage() {
             <StatCard
               label="Total Tickets"
               value={tickets.total?.toLocaleString() ?? 0}
-              icon="🎫"
+              Icon={Ticket}
               accent="var(--color-purple)"
             />
             <StatCard
               label="Open Tickets"
               value={(tickets.open + tickets.inProgress)?.toLocaleString() ?? 0}
-              icon="🔔"
+              Icon={Bell}
               accent="var(--color-warning)"
             />
             <StatCard
               label="Resolved Tickets"
               value={(tickets.resolved + tickets.closed)?.toLocaleString() ?? 0}
-              icon="✅"
+              Icon={CheckCircle2}
               accent="var(--color-success)"
             />
           </div>
@@ -270,7 +279,7 @@ export default function AnalyticsPage() {
           <div className={`glass-card ${styles.chartCard}`}>
             <div className={styles.cardHeader}>
               <h3 className={styles.cardTitle}>
-                📈 Documents Processed Over Time
+                Documents Processed Over Time
               </h3>
               <div className={styles.timeToggle}>
                 {[7, 30, 90].map((days) => (

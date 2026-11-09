@@ -8,16 +8,34 @@
   border-left: 3px solid var(--kpi-accent, var(--color-primary));
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-xs);
-  padding: 0.875rem 1.125rem;
+  padding: 1rem;
   display: flex;
   flex-direction: column;
   gap: 0;
   min-width: 0;
   transition: box-shadow var(--transition-fast);
+  position: relative;
 }
 
 .card:hover {
   box-shadow: var(--shadow-sm);
+}
+
+.iconWrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-md);
+  background: var(--kpi-accent, var(--color-primary));
+  opacity: 0.12;
+  margin-bottom: 0.5rem;
+}
+
+.icon {
+  color: var(--kpi-accent, var(--color-primary));
+  stroke-width: 2.5;
 }
 
 .label {
@@ -51,4 +69,11 @@
 .secondary strong {
   color: var(--kpi-accent, var(--color-primary));
   font-weight: 700;
+}
+
+.trend {
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin: 0.25rem 0 0;
+  margin-top: auto;
 }

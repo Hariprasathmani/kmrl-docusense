@@ -1,21 +1,23 @@
-// components/UI/StatCard.jsx — KPI stat card for Analytics
+// components/UI/StatCard.jsx — KPI stat card for Analytics with Lucide icons
 import styles from './StatCard.module.css';
 
 /**
- * @param {string}        label   — Card title
- * @param {number|string} value   — Primary metric
- * @param {string}        icon    — Emoji / unicode icon
- * @param {string}        accent  — CSS custom-property colour (e.g. 'var(--color-primary)')
- * @param {string}       [trend]  — Optional small trend label
+ * StatCard — Professional analytics stat card with Lucide icon support
+ * 
+ * @param {string} label - Card title
+ * @param {number|string} value - Primary metric
+ * @param {React.ComponentType} [Icon] - Lucide icon component
+ * @param {string} [accent] - CSS custom-property colour (e.g. 'var(--color-primary)')
+ * @param {string} [trend] - Optional small trend label
  */
-export default function StatCard({ label, value, icon, accent, trend }) {
+export default function StatCard({ label, value, Icon, accent, trend }) {
   return (
-    <article className={`glass-card ${styles.card}`} style={{ '--card-accent': accent }}>
+    <article className={`glass-card ${styles.card}`} style={{ '--card-accent': accent || 'var(--color-primary)' }}>
       <div className={styles.accentBar} aria-hidden="true" />
 
-      {icon && (
+      {Icon && (
         <div className={styles.iconWrap} aria-hidden="true">
-          <span className={styles.icon}>{icon}</span>
+          <Icon size={20} className={styles.icon} />
         </div>
       )}
 

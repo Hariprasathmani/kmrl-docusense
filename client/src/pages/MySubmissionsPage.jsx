@@ -1,10 +1,14 @@
-// pages/MySubmissionsPage.jsx — Employee's "My Submissions" page (cross-department)
+// pages/MySubmissionsPage.jsx — Employee's "My Submissions" page with Lucide icons
 import { useState, useEffect, useMemo, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Calendar, FileText, Search, Inbox } from 'lucide-react';
 import { ticketService } from '../services/ticketService';
 import DataTable from '../components/UI/DataTable';
-import Badge from '../components/UI/Badge';
+import StatusBadge from '../components/UI/StatusBadge';
+import DepartmentBadge from '../components/UI/DepartmentBadge';
 import Spinner from '../components/UI/Spinner';
+import EmptyState from '../components/UI/EmptyState';
+import PageHeader from '../components/UI/PageHeader';
 import styles from './MySubmissionsPage.module.css';
 
 // Map ticket status to badge variant
@@ -44,10 +48,10 @@ const COLUMNS = [
       const title = row.requestType === 'leave'
         ? `${row.leaveRequestData?.leaveType} Leave`
         : row.documentId?.title || 'Untitled Request';
-      const icon = row.requestType === 'leave' ? '📅' : '📄';
+      const Icon = row.requestType === 'leave' ? Calendar : FileText;
       return (
         <span className={styles.titleCell}>
-          <span className={styles.docIcon} aria-hidden="true">{icon}</span>
+          <Icon size={16} className={styles.docIcon} aria-hidden="true" />
           <span className={styles.titleText}>{title}</span>
         </span>
       );
@@ -57,17 +61,14 @@ const COLUMNS = [
     key: 'department',
     label: 'Sent To',
     render: (row) => (
-      <span className={styles.deptPill}>{row.department || '—'}</span>
+      row.department ? <DepartmentBadge department={row.department} /> : <span>—</span>
     ),
   },
   {
     key: 'status',
     label: 'Status',
     render: (row) => (
-      <Badge
-        label={(row.status || '—').replace(/^\w/, (c) => c.toUpperCase())}
-        variant={STATUS_VARIANT[row.status] || 'pending'}
-      />
+      <StatusBadge status={row.status || 'pending'} />
     ),
   },
   {
@@ -279,44 +280,40 @@ export default function MySubmissionsPage() {
 
       {/* Table or empty state */}
       {filtered.length === 0 ? (
-        <div className={`glass-card ${styles.emptyState}`} role="status">
-          <span className={styles.stateIcon} aria-hidden="true">
-            {search || statusFilter || typeFilter ? '🔎' : '📭'}
-          </span>
-          <h2 className={styles.stateTitle}>
-            {search || statusFilter || typeFilter ? 'No submissions match your search' : 'No submissions yet'}
-          </h2>
-          <p className={styles.stateText}>
-            {search || statusFilter || typeFilter
-              ? 'Try a different search term or clear the filter.'
-              : 'Submit your first request to get started.'}
-          </p>
-          {!search && !statusFilter && !typeFilter && (
-            <div className={styles.ctaButtons}>
+        <EmptyState
+          title={search || statusFilter || typeFilter ? 'No submissions match your search' : 'No submissions yet'}
+          description={search || statusFilter || typeFilter
+            ? 'Try a different search term or clear the filter.'
+            : 'Submit your first request to get started.'}
+          Icon={search || statusFilter || typeFilter ? Search : Inbox}
+          action={
+            !search && !statusFilter && !typeFilter ? (
+              <div className={styles.ctaButtons}>
+                <button
+                  className="btn btn-primary"
+                  onClick={() => navigate('/upload')}
+                >
+                  <FileText size={16} aria-hidden="true" />
+                  Submit Document
+                </button>
+                <button
+                  className="btn btn-primary"
+                  onClick={() => navigate('/leave-request')}
+                >
+                  <Calendar size={16} aria-hidden="true" />
+                  Request Leave
+                </button>
+              </div>
+            ) : (
               <button
-                className="btn btn-primary"
-                onClick={() => navigate('/upload')}
+                className="btn btn-ghost"
+                onClick={() => { setSearch(''); setStatusFilter(''); setTypeFilter(''); }}
               >
-                Submit Document
+                Clear Filters
               </button>
-              <button
-                className="btn btn-primary"
-                onClick={() => navigate('/leave-request')}
-              >
-                Request Leave
-              </button>
-            </div>
-          )}
-          {(search || statusFilter || typeFilter) && (
-            <button
-              className="btn btn-ghost"
-              onClick={() => { setSearch(''); setStatusFilter(''); setTypeFilter(''); }}
-              style={{ marginTop: '1.25rem' }}
-            >
-              Clear Filters
-            </button>
-          )}
-        </div>
+            )
+          }
+        />
       ) : (
         <div className={`glass-card ${styles.tableCard}`}>
           <DataTable

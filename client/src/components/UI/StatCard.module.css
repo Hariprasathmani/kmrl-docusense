@@ -39,8 +39,8 @@
 }
 
 .icon {
-  font-size: 1.125rem;
-  line-height: 1;
+  color: var(--card-accent, var(--color-primary));
+  stroke-width: 2.5;
 }
 
 .body {

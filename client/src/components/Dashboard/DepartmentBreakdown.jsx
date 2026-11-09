@@ -1,15 +1,23 @@
-// components/Dashboard/DepartmentBreakdown.jsx — Department document count table
+// components/Dashboard/DepartmentBreakdown.jsx — Department document count table with Lucide icons
+import {
+  Building2,
+  UsersRound,
+  ShieldCheck,
+  Scale,
+  Workflow,
+  Monitor,
+} from 'lucide-react';
 import styles from './DepartmentBreakdown.module.css';
 
 const DEPARTMENTS = ['Finance', 'HR', 'Safety', 'Legal', 'Operations', 'IT'];
 
 const DEPT_META = {
-  Finance:    { icon: '💰', accent: 'var(--color-warning)' },
-  HR:         { icon: '👥', accent: 'var(--color-primary)' },
-  Safety:     { icon: '🦺', accent: 'var(--color-success)' },
-  Legal:      { icon: '⚖️', accent: 'var(--color-accent)' },
-  Operations: { icon: '⚙️', accent: '#a78bfa' },
-  IT:         { icon: '💻', accent: '#06b6d4' },
+  Finance:    { Icon: Building2, accent: 'var(--color-warning)' },
+  HR:         { Icon: UsersRound, accent: 'var(--color-primary)' },
+  Safety:     { Icon: ShieldCheck, accent: 'var(--color-success)' },
+  Legal:      { Icon: Scale, accent: 'var(--color-accent)' },
+  Operations: { Icon: Workflow, accent: '#a78bfa' },
+  IT:         { Icon: Monitor, accent: '#06b6d4' },
 };
 
 export default function DepartmentBreakdown({ data }) {
@@ -26,11 +34,11 @@ export default function DepartmentBreakdown({ data }) {
         {DEPARTMENTS.map((dept) => {
           const count = data?.[dept] ?? 0;
           const pct   = total > 0 ? Math.round((count / total) * 100) : 0;
-          const { icon, accent } = DEPT_META[dept];
+          const { Icon, accent } = DEPT_META[dept];
 
           return (
             <li key={dept} className={styles.row}>
-              <span className={styles.deptIcon} aria-hidden="true">{icon}</span>
+              <Icon size={18} className={styles.deptIcon} aria-hidden="true" />
 
               <span className={styles.deptName}>{dept}</span>
 

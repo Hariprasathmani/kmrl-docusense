@@ -1,0 +1,17 @@
+/* LoadingState.module.css */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-4);
+  padding: var(--space-8);
+  min-height: 200px;
+}
+
+.message {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  text-align: center;
+}

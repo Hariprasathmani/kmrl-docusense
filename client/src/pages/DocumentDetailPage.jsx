@@ -1,9 +1,12 @@
 // pages/DocumentDetailPage.jsx — Single document detail view
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import { AlertTriangle, Search } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { documentService } from '../services/documentService';
 import Badge from '../components/UI/Badge';
+import DepartmentBadge from '../components/UI/DepartmentBadge';
+import StatusBadge from '../components/UI/StatusBadge';
 import Spinner from '../components/UI/Spinner';
 import Collapsible from '../components/UI/Collapsible';
 import styles from './DocumentDetailPage.module.css';
@@ -151,11 +154,10 @@ export default function DocumentDetailPage() {
 
   // ── Error / Not Found ─────────────────────────────────────────────────────
   if (error) {
+    const { AlertTriangle, Search } = require('lucide-react');
     return (
       <section className={`page-enter ${styles.centerState}`} role="alert">
-        <span className={styles.stateIcon} aria-hidden="true">
-          {error === 'Document not found' ? '🔍' : '⚠️'}
-        </span>
+        <AlertTriangle size={32} aria-hidden="true" className={styles.stateIcon} />
         <h2 className={styles.stateTitle}>{error}</h2>
         <button
           className="btn btn-ghost"

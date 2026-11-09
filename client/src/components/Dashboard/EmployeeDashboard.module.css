@@ -108,8 +108,8 @@
   border: 2px dashed var(--border-color);
 }
 
-.emptyState > span {
-  font-size: 3rem;
+.emptyIcon {
+  color: var(--color-text-dim);
 }
 
 .emptyState p {
@@ -181,6 +181,10 @@
   gap: 0.25rem;
 }
 
+.metaIcon {
+  flex-shrink: 0;
+}
+
 /* CTA Section */
 .ctaSection {
   margin-top: var(--space-4);
@@ -192,6 +196,14 @@
   border-radius: var(--radius-lg);
   border: 2px solid var(--color-accent);
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.ctaIcon {
+  color: var(--color-accent);
 }
 
 .ctaCard h3 {

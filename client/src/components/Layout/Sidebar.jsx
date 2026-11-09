@@ -1,34 +1,34 @@
-// components/Layout/Sidebar.jsx — KMRL DocuSense App Shell Navigation
+// components/Layout/Sidebar.jsx — KMRL DocuSense App Shell Navigation with Lucide Icons
 import { NavLink, useNavigate } from 'react-router-dom';
 import {
-  RiDashboardLine,
-  RiFileList3Line,
-  RiUpload2Line,
-  RiGroupLine,
-  RiTicketLine,
-  RiBarChartBoxLine,
-  RiLogoutBoxLine,
-} from 'react-icons/ri';
+  LayoutDashboard,
+  Files,
+  Ticket,
+  Upload,
+  Users,
+  BarChart3,
+  LogOut,
+} from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 import styles from './Sidebar.module.css';
 
 // Navigation items for Department Officers and Admin
 const officerNavItems = [
-  { to: '/dashboard', icon: RiDashboardLine,    label: 'Overview' },
-  { to: '/documents', icon: RiFileList3Line,    label: 'Documents' },
-  { to: '/tickets',   icon: RiTicketLine,       label: 'Tickets' },
-  { to: '/upload',    icon: RiUpload2Line,       label: 'Upload' },
-  { to: '/users',     icon: RiGroupLine,         label: 'Users',     admin: true },
-  { to: '/analytics', icon: RiBarChartBoxLine,   label: 'Analytics', admin: true },
+  { to: '/dashboard', icon: LayoutDashboard, label: 'Overview' },
+  { to: '/documents', icon: Files, label: 'Documents' },
+  { to: '/tickets', icon: Ticket, label: 'Tickets' },
+  { to: '/upload', icon: Upload, label: 'Upload' },
+  { to: '/users', icon: Users, label: 'Users', admin: true },
+  { to: '/analytics', icon: BarChart3, label: 'Analytics', admin: true },
 ];
 
 // Navigation items for Employees/Requesters (Viewer role)
 const requesterNavItems = [
-  { to: '/dashboard', icon: RiDashboardLine,    label: 'My Dashboard' },
-  { to: '/my-tickets', icon: RiTicketLine,      label: 'My Tickets' },
-  { to: '/my-submissions', icon: RiFileList3Line,    label: 'My Submissions' },
-  { to: '/documents', icon: RiFileList3Line,    label: 'My Documents' },
-  { to: '/upload',    icon: RiUpload2Line,      label: 'New Request' },
+  { to: '/dashboard', icon: LayoutDashboard, label: 'My Dashboard' },
+  { to: '/my-tickets', icon: Ticket, label: 'My Tickets' },
+  { to: '/my-submissions', icon: Files, label: 'My Submissions' },
+  { to: '/documents', icon: Files, label: 'My Documents' },
+  { to: '/upload', icon: Upload, label: 'New Request' },
 ];
 
 function getInitials(name = '') {
@@ -105,7 +105,7 @@ export default function Sidebar() {
               `${styles.link} ${isActive ? styles.linkActive : ''}`
             }
           >
-            <Icon className={styles.icon} aria-hidden="true" />
+            <Icon size={18} className={styles.icon} aria-hidden="true" />
             <span>{label}</span>
           </NavLink>
         ))}
@@ -129,7 +129,7 @@ export default function Sidebar() {
           onClick={handleLogout}
           aria-label="Sign out"
         >
-          <RiLogoutBoxLine className={styles.logoutIcon} aria-hidden="true" />
+          <LogOut size={16} className={styles.logoutIcon} aria-hidden="true" />
           Sign out
         </button>
       </div>
